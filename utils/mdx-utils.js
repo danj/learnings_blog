@@ -21,7 +21,7 @@ export const sortPostsByDate = (posts) => {
   });
 };
 
-export const getPosts = () => {
+export const getPosts = (tag) => {
   let posts = postFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
     const { content, data } = matter(source);
@@ -33,6 +33,9 @@ export const getPosts = () => {
     };
   });
 
+  if (tag) {
+    posts = posts.filter((post) => post.data.tags && post.data.tags.includes(tag));
+  }
   posts = sortPostsByDate(posts);
 
   return posts;

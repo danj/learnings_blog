@@ -7,6 +7,7 @@ import Layout, { GradientBackground } from '../components/Layout';
 import ArrowIcon from '../components/ArrowIcon';
 import { getGlobalData } from '../utils/global-data';
 import SEO from '../components/SEO';
+import Tags from "../components/Tags";
 
 export default function Index({ posts, globalData }) {
   return (
@@ -34,6 +35,7 @@ export default function Index({ posts, globalData }) {
                     </p>
                   )}
                   <h2 className="text-2xl md:text-3xl">{post.data.title}</h2>
+                    <Tags tags={post.data.tags} />
                   {post.data.description && (
                     <p className="mt-3 text-lg opacity-60">
                       {post.data.description}
