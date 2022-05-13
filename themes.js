@@ -44,6 +44,15 @@ exports.COLOR_THEMES = {
       'gradient-4': '#FFCC81',
     },
   },
+  blackandwhite: {
+    colors: {
+      primary: '#303091',
+        'gradient-1': '#8e92bb',
+        'gradient-2': '#dbe9ff',
+        'gradient-3': '#bfcbe1',
+        'gradient-4': '#91b1ce',
+  },
+},
 };
 
 exports.FONT_THEMES = {
