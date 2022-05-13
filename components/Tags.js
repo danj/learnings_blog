@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import DNJ from './dnj';
+import CustomLink from "./CustomLink";
 
 export default function Tags({ tags }) {
     if (tags) {
         const res = tags.split(/\s*,\s*/).map((tag) =>
-            (<Link href={'/tags/' + tag}>
-                <a>#{tag} </a>
-            </Link>))
+            (<CustomLink key={tag} href={`/tags/${tag}`}>
+                #{tag}{' '}
+            </CustomLink>))
         return res;
     } else {
         return (<></>)

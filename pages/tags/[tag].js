@@ -80,7 +80,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-    console.log("YYYYYY");
     const posts = getPosts(context.params.tag);
     const globalData = getGlobalData();
 
