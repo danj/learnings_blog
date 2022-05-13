@@ -1,0 +1,33 @@
+---
+title: How to add a favicon to a next.js static site?
+description: "Adding a favicon icon to a next.js static site in two simple steps"
+date: May 12, 2022
+tags: next.js, netlify
+---
+
+
+
+## Step 1. Place your favicon.ico in /public
+
+Everything under the public folder is automatically bundled by next.js
+
+Some useful links:
+- [Static File Serving](https://nextjs.org/docs/basic-features/static-file-serving)
+- [Static directory is deprecated](https://github.com/vercel/next.js/blob/deprecated-main/errors/static-dir-deprecated.md)
+
+
+## Step 2. Add the favicon reference
+
+Edit _document.js
+
+Before
+```
+<Head />
+```
+
+After
+```
+<Head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+</Head>
+```
