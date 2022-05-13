@@ -1,0 +1,51 @@
+---
+title: How to check for stale AWS IAM user accounts using bash?
+description: "Two methods for granting access to S3 buckets to a separate AWS account"
+date: May 6, 2021
+---
+
+Do you periodically check and cleanup old IAM user accounts? Have you ever spent time trying to figure out which IAM accounts are actually being used?
+
+While the IAM console does provide the information it is tedious to use. Use the following command-line steps speed-up the task, increase your account security, and up your skills.
+
+## Prerequisites
+- awscli
+- jq
+- csvkit
+
+## Step 1 - Request the report
+```
+$ aws iam generate-credential-report
+```
+
+## Step 2 – Download the csv report
+```
+$ aws iam get-credential-report | jq -rc '.Content' | base64 -d > \
+    /tmp/credential_report.csv
+```
+
+## Step 3 – Filter out the interesting columns
+```
+$ csvcut /tmp/credential_report.csv \
+    -c user,password_last_used,access_key_1_last_used_date,access_key_2_last_used_date > \
+    /tmp/credential_last_access_report.csv
+```
+
+## Step 4 – Filter by date
+- Set DATE to a cutoff date.
+-- +”%s” to specify the epoch output format
+-- -d target-date (nice parsing features) to set the target date
+- Convert the csv to json, and then use jq for filtering
+- Use sed to workaround a jq parsing bug(?) of iso-8601 timestamps
+- Use jq -s to convert the sequence of json objects to an array of objects
+
+```
+$export DATE=$(date -d '1 year ago' +"%s")
+$cat /tmp/credential_last_access_report.csv | \
+   csvjson | sed s/+00:00/Z/g | \
+   jq -c ".[] | \
+     select(.password_last_used | . == null or fromdateiso8601 < ${DATE}) | \
+     select(.access_key_1_last_used_date | . == null or fromdateiso8601 < ${DATE}) | \
+     select(.access_key_2_last_used_date | . == null or fromdateiso8601 < ${DATE}) | \
+   jq -s '.'
+```

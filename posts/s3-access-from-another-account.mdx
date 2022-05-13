@@ -1,0 +1,17 @@
+---
+title: How to grant access to an S3 bucket to users from another AWS account?
+description: "Two methods for granting access to S3 buckets to a separate AWS account"
+date: May 13 2021
+---
+
+The simplest method for granting users from other AWS accounts access to your s3 bucket involves two steps.
+
+1. Create an IAM policy in the user’s account granting access to your s3 bucket
+1. Modify your bucket policy (in your account) granting permission to the user from the “other” account
+
+The key point to remember is that **both** the user and the bucket need to have their policies configured accordingly.
+
+Note, however, that this method only works if the users are AWS users and have means to modify their IAM policies. If this is not the case, for example when your users don’t have an AWS account you’ll need to consider other methods such as Cognito
+
+Complete details for this method described by AWS under the [Resource-based policies and IAM policies](https://aws.amazon.com/premiumsupport/knowledge-center/cross-account-access-s3/) section.
+
