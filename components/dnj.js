@@ -1,5 +1,6 @@
 import * as React from "react"
 
+//https://maketext.io/
 //https://transform.tools/
 //https://frontend-digest.com/how-to-import-svgs-into-nextjs-8ec6100e613f
 
