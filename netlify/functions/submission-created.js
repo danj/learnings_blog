@@ -4,21 +4,29 @@ let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications['api-key'];
 apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
 
-console.log(`Using API key ${process.env.SENDINBLUE_API_KEY}`);
-
-exports.handler = async function (event, context) {
+exports.handler = async function (event, _context) {
     console.log(event);
     let body = JSON.parse(event.body);
     let payload = body.payload;
 
+    if (payload.form_name !== 'newsletter-subscribe') {
+        console.log('Wrong form!')
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                error: 'Wrong form'
+            })
+        }
+    }
+
     if (!payload.email) {
         console.log('missing email')
-        return callback(null, {
+        return {
             statusCode: 400,
             body: JSON.stringify({
                 error: 'missing email'
             })
-        })
+        }
     }
     console.log("Sending data to SendInBlue");
 
