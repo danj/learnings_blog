@@ -1,16 +1,17 @@
 {
-  "name": "nextjs-blog-theme",
-  "description": "A customizable Next.js and Tailwind blog starter. Designed by the Bejamas agency.",
-  "author": "Bejamas and Netlify Inc.",
+  "name": "danj-learnins-blog",
+  "description": "A Next.js and Tailwind blog I use to post about things I've learned. Designed by the Bejamas agency.",
+  "author": "Me (with the help of Bejamas, and Netlify Inc.)",
   "contributors": [
+    "Dan Julius",
     "Charlie Gerard",
     "Prince Wilson",
     "Tara Manicsic",
     "Thom Krupa"
   ],
-  "homepage": "https://github.com/netlify-templates/nextjs-blog-theme",
+  "homepage": "https://blog.djulius.com",
   "bugs": {
-    "url": "https://github.com/netlify-templates/nextjs-blog-theme/issues"
+    "url": "https://github.com/danj/learnings_blog/issues"
   },
   "scripts": {
     "dev": "next",
