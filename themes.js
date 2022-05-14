@@ -46,7 +46,7 @@ exports.COLOR_THEMES = {
   },
   blackandwhite: {
     colors: {
-      primary: '#303091',
+      primary: 'rgb(30, 58, 138)',
         'gradient-1': '#8e92bb',
         'gradient-2': '#dbe9ff',
         'gradient-3': '#bfcbe1',

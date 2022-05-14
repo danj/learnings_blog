@@ -56,7 +56,7 @@ export default function SignupForm() {
                         name="newsletter-subscribe"
                         data-netlify={true}
                         data-netlify-honeypot="bot-field"
-                        className="w-fit bg-grey-50 p-4 flex flex-col shadow-sm"
+                        className="mt-8 w-1/2 bg-grey-50 p-4 flex flex-col shadow-sm"
                     >
                         <Field type="hidden" name="form-name"/>
                         <Field type="hidden" name="bot-field"/>
@@ -64,18 +64,20 @@ export default function SignupForm() {
                         <h2 className="text-center text-2xl font-bold">Sign up for my tips newsletter</h2>
                         <div className="my-2 flex flex-col">
                             <Label htmlFor="firstName" required={false} text="First name"/>
-                            <Field id="firstName" name="firstName" className="p-2 border-2 border-gray-400"></Field>
-                            <ErrorMessage name="firstName" className="text-red-700" component="span"/>
+                            <Field id="firstName" name="firstName"
+                                   className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm"></Field>
+                            <ErrorMessage name="firstName" className="text-red-700 text-sm my-2" component="span"/>
                         </div>
                         <div className="my-2 flex flex-col">
                             <Label htmlFor="lastName" required={false} text="Last name"/>
-                            <Field id="lastName" name="lastName" className="p-2 border-2 border-gray-400"></Field>
-                            <ErrorMessage name="lastName" className="text-red-700" component="span"/>
+                            <Field id="lastName" name="lastName"
+                                   className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm"></Field>
+                            <ErrorMessage name="lastName" className="text-red-700 text-sm my-2" component="span"/>
                         </div>
                         <div className="my-2 flex flex-col">
                             <Label htmlFor="email" required={true} text="email"/>
-                            <Field id="email" name="email" className="p-2 border-2 border-gray-400"></Field>
-                            <ErrorMessage name="email" className="text-red-700" component="span"/>
+                            <Field id="email" name="email" className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm"></Field>
+                            <ErrorMessage name="email" className="text-red-700 text-sm my-2" component="span"/>
                         </div>
                         <button
                             disabled={!formik.isValid || !formik.dirty}
