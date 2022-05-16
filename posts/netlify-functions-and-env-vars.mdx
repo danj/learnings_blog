@@ -1,0 +1,24 @@
+---
+title: Writing my first Netlify functions
+description: "Some things to consider - development and deployment"
+date: May 15, 2022
+tags: netlify
+---
+
+## During development
+
+- The function **filenames** are used to auto-magically configure the automated triggers ([function trigger docs](https://docs.netlify.com/functions/trigger-on-events/))
+- During development, you can use the netlify CLI to invoke functions see - _netlify functions:invoke_ or _netlify functions:serve_
+- Environment variables are managed from within the Netlify dashboard. They are not read from .env.local, and they are **not** updated till you restart the dev server
+- Debugging - Is there a better way to debug than using console.log?
+
+## Deploying
+
+Some things to think about:
+
+- Functions are deployed to AWS us-east-1 ([docs](https://docs.netlify.com/functions/overview/)). How to go about multi-region deployments?
+- Logging -The Netlify dashboard provides basic access to recent logs.
+You'll need a (paid) [log drain](https://docs.netlify.com/monitor-sites/log-drains/) in order to access the logs programmatically.
+- Monitoring - not sure how this can be done
+
+
